@@ -1,0 +1,93 @@
+{% load static %}
+{% static "images" as pImages %}
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BS Mart</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+  <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+    href="{% static 'images/ico/apple-touch-icon-144-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114"
+    href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72"
+    href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
+
+</head>
+
+<body>
+  {% include 'header.html' %}
+	{% block content %}
+  <div class="box-root padding-top--10 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- {{form.as_p}} -->
+      <table class="table text-center table-bordered">
+        <tr style="background-color: orange">
+          <td colspan="12">
+            <center>All added Products</center>
+          </td>
+        </tr>
+      </table>
+      <table class="table table-striped table-bordered">
+        <tr style="background-color: rgba(224, 135, 34, 0.787);">
+          <th>Product Id</th>
+          <th>Customer Id</th>
+          <th>Product Name</th>
+          <th>Description</th>
+          <th>Product category</th>
+          <th>Available quantity</th>
+          <th>Available colors</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th colspan="2">Operations</th>
+        </tr>
+        {% for product in listOfProducts %}
+        <tr>
+          <td>{{product.id}}</td>
+          <td>{{product.customer_id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.colors}}</td>
+          <td>{{product.brand}}</td>
+          <td>{{product.price}}</td>
+          <td><img src="{{media}}/{{product.image}}" height="150px" width="180px" /></td>
+          <td><a href="/updateProduct/{{product.id}}" class="btn btn-success">Update</a></td>
+          <td><a href="/deleteProduct/{{product.id}}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </form>
+  </div>
+
+  <div class="footer-link padding-top--24">
+    <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+      <span><a href="#">© BS-Mart</a></span>
+      <span><a href="#">Contact</a></span>
+      <span><a href="#">Privacy & terms</a></span>
+    </div>
+  </div>
+  {% endblock content %}
+	{% include 'footer.html' %}
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+  <script src="{% static 'js/price-range.js' %}"></script>
+  <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

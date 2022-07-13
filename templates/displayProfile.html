@@ -1,0 +1,93 @@
+{% load static %}
+{% static "images" as pImages %}
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BS Mart</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+  <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+    href="{% static 'images/ico/apple-touch-icon-144-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114"
+    href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72"
+    href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
+
+</head>
+
+<body>
+
+  {% include 'header.html' %}
+  {% block content %} <div class="box-root padding-top--10 flex-flex flex-direction--column"
+    style="flex-grow: 1; z-index: 9;">
+
+    <form action="/updateProfile/">
+      {% csrf_token %}
+      <center>
+        <table class="table text-center table-bordered" style="width: 60%;">
+          <tr style="background-color:orange">
+            <td colspan="2"><b>User Profile</b></td>
+          </tr>
+        </table>
+        <table class="table table-striped text-center table-bordered" style="width: 60%;">
+
+          <tr>
+            <td>Username</td>
+            <td>{{customer.name}}</td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>{{customer.password}}</td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td>{{customer.email}}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{customer.address}}</td>
+          </tr>
+          <tr>
+            <td>Mobile No.</td>
+            <td>{{customer.mobileNo}}</td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td>{{customer.category}}</td>
+          </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">Update profile</button>
+
+        <a href="/deleteProfile/" class="btn btn-primary">Delete Profile</a>
+      </center>
+    </form>
+  </div>
+
+  <div class="footer-link padding-top--24">
+    <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+      <span><a href="#">© BS-Mart</a></span>
+      <span><a href="#">Contact</a></span>
+      <span><a href="#">Privacy & terms</a></span>
+    </div>
+  </div>
+  {% endblock content %}
+  {% include 'footer.html' %}
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+  <script src="{% static 'js/price-range.js' %}"></script>
+  <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

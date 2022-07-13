@@ -1,0 +1,95 @@
+{% load static %}
+{% load mathfilters %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BS Mart</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="{% static 'images/ico/apple-touch-icon-144-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
+</head>
+<!--/head-->
+
+<body>
+    {% include 'header.html' %}
+	{% block content %}
+    <div class="login-root">
+        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+            <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+                <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                    <h1><a href="http://blog.stackfindover.com/" rel="dofollow" style="color: chocolate;">Enter card details</a>
+                    </h1>
+                </div>
+                <div class="formbg-outer">
+                    <div class="formbg">
+                        <div class="formbg-inner padding-horizontal--48">
+                            <!-- <center><span class="padding-bottom--15">Enter card details</span></center> -->
+                            <form method="post" action="/addOrder/" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="field padding-bottom--24">
+                                    <label for="number">Card Number</label>
+                                    <input type="text" name="cardNumber">
+                                </div>
+                                <div class="field padding-bottom--24">
+                                    <label for="name">Account holder name</label>
+                                    <input type="text" name="name">
+                                </div>
+                                <div class="field padding-bottom--24">
+                                    <label for="cvv">Enter CVV</label>
+                                    <input type="password" name="cvv">
+                                </div>
+                                <div class="field padding-bottom--24">
+                                    <label for="date">Valid Thru</label>
+                                    <input type="date" name="date">
+                                </div>
+                                <div class="field padding-bottom--24">
+                                    <input type="submit" name="submit" value="Make Payment">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-link padding-top--24">
+        <!-- <span>Don't have an account? <a href="">Sign up</a></span> -->
+        <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+          <span><a href="#">© BS-Mart</a></span>
+          <span><a href="#">Contact</a></span>
+          <span><a href="#">Privacy & terms</a></span>
+        </div>
+      </div>
+    {% endblock content %}
+	{% include 'footer.html' %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

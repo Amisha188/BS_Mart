@@ -1,0 +1,122 @@
+{% load static %}
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BS Mart</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+  <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+    href="{% static 'images/ico/apple-touch-icon-144-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114"
+    href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72"
+    href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
+
+</head>
+
+<body>
+  {% include 'header.html' %}
+	{% block content %}
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1><a href="http://blog.stackfindover.com/" rel="dofollow" style="color: chocolate;">BS-Mart</a></h1>
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <center><span class="padding-bottom--15">Enter product details</span></center>
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                <div class="field padding-bottom--24">
+                  <label for="pname">Product Name</label>
+                  <input type="text" name="pname" value={{product.name}}>
+                </div>
+                <div class="field padding-bottom--24">
+                  <label for="pbrand">Product Brand</label>
+                  <input type="text" name="pbrand" value={{product.name}}>
+                </div>
+                <div class="field padding-bottom--24">
+                  <label for="pcategory">Product Category</label>
+                  <select name="pcategory" id="pcategory" value={{product.name}}>
+                    <option value="clothes">Clothes</option>
+                    <option value="book">Book</option>
+                    <option value="electronic">Electronic</option>
+                    <option value="dailyessential">Daily Essential</option>
+                    <option value="footwear">Footwear</option>
+                    <option value="ornaments">Ornaments</option>
+                  </select>
+                  <!-- <input type="text" name="pcategory"> -->
+                </div>
+                <div class="field padding-bottom--24">
+                  <label for="pprice">Product Price</label>
+                  <input type="text" name="pprice" value={{product.price}}>
+                </div>
+                <div class="field padding-bottom--24">
+                  <label for="pprice">Product Description</label>
+                  <input type="textarea" name="pdescription" value={{product.description}}>
+                </div>
+                <div class="field padding-bottom--24">
+                  <label for="pquantity">Product Quantity</label>
+                  <input type="text" name="pquantity" value={{product.quantity}}>
+                </div>
+                <div class="field padding-bottom--24">
+                  <select name="colors" id="colours" multiple>
+                    <option value="black">Black</option>
+                    <option value="whte">White</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="pink">Pink</option>
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="orange">Orange</option>
+                    <option value="violet">Violet</option>
+                  </select>
+                </div>
+
+                <div class="field padding-bottom--24">
+                  <label for="pimage">Product Image</label>
+                  <input type="file" name="pimage">
+                </div>
+
+                <div class="field padding-bottom--24">
+                  <input type="submit" name="submit" value="Update Product">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="footer-link padding-top--24">
+            <!-- <span>Don't have an account? <a href="">Sign up</a></span> -->
+            <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+              <span><a href="#">© BS-Mart</a></span>
+              <span><a href="#">Contact</a></span>
+              <span><a href="#">Privacy & terms</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
+	{% include 'footer.html' %}
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+  <script src="{% static 'js/price-range.js' %}"></script>
+  <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
